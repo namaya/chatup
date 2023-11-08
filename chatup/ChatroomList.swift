@@ -9,7 +9,16 @@ import SwiftUI
 
 struct ChatroomList: View {
     var body: some View {
-        List {
+        NavigationStack {
+            List(chatrooms, id: \.id) { chatroom in
+                NavigationLink {
+//                    ChatroomDetail(chatroom: chatroom)
+                    ChatroomDetail()
+                } label: {
+                    ChatroomRow(chatroom: chatroom)
+                }
+                
+            }
         }
     }
 }

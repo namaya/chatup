@@ -12,12 +12,25 @@ struct ChatroomRow: View {
     
     var body: some View {
         HStack {
-            Text("test")
+            Text("image")
+                .foregroundStyle(.clear)
             VStack {
-                Text(chatroom.name)
-                    .multilineTextAlignment(.trailing)
-                Text(chatroom.messages.last ?? "")
-                    .foregroundStyle(.gray)
+                HStack {
+                    Text(chatroom.name)
+                        .bold()
+                    Spacer()
+                    Text(chatroom.dateFormatter.string(from: chatroom.lastUpdated))
+                        .foregroundStyle(.gray)
+                        .padding(.trailing)
+                }
+                HStack {
+                    Text(chatroom.messages.last ?? "")
+                        .foregroundStyle(.gray)
+                        .font(.system(size: 15))
+                        .lineLimit(2)
+                        .padding(.trailing)
+                }
+                Divider()
             }
         }
 
