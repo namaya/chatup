@@ -9,13 +9,13 @@ import SwiftUI
 
 
 struct ChatroomDetail: View {
-    var messages: [Message]
+    var chatroom: Chatroom
     
     @State private var textInput: String = ""
 
     var body: some View {
         VStack {
-            List(messages, id: \.id) { message in
+            List(chatroom.messages, id: \.id) { message in
                 HStack {
                     if message.author == clientUser.name {
                         Spacer()
@@ -34,7 +34,7 @@ struct ChatroomDetail: View {
                     }
                 }
             }
-            .navigationBarTitle("Chat")
+            .navigationBarTitle(chatroom.name)
             HStack {
                 TextField("Type a message", text: $textInput)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -54,5 +54,5 @@ struct ChatroomDetail: View {
 }
 
 #Preview {
-    ChatroomDetail(messages: chatrooms[0].messages)
+    ChatroomDetail(chatroom: chatrooms[0])
 }

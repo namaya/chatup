@@ -12,8 +12,7 @@ struct ChatroomList: View {
         NavigationStack {
             List(chatrooms, id: \.id) { chatroom in
                 NavigationLink {
-//                    ChatroomDetail(chatroom: chatroom)
-                    ChatroomDetail(messages: chatroom.messages)
+                    ChatroomDetail(chatroom: chatroom)
                 } label: {
                     ChatroomRow(chatroom: chatroom)
                 }

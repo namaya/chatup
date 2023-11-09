@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BC085F042AFA763A002EE49A /* ChatroomRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC085F032AFA763A002EE49A /* ChatroomRow.swift */; };
+		BC085F062AFBCBFE002EE49A /* ChatroomDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC085F052AFBCBFE002EE49A /* ChatroomDetail.swift */; };
+		BC085F082AFC769E002EE49A /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC085F072AFC769E002EE49A /* Message.swift */; };
+		BC085F0A2AFC78BB002EE49A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC085F092AFC78BB002EE49A /* User.swift */; };
 		BC73DB192AAC0A880094C471 /* chatupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73DB182AAC0A880094C471 /* chatupApp.swift */; };
 		BC73DB1B2AAC0A880094C471 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73DB1A2AAC0A880094C471 /* ContentView.swift */; };
 		BC73DB1D2AAC0A880094C471 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC73DB1C2AAC0A880094C471 /* Assets.xcassets */; };
@@ -14,6 +18,8 @@
 		BC73DB2A2AAC0A880094C471 /* chatupTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73DB292AAC0A880094C471 /* chatupTests.swift */; };
 		BC73DB342AAC0A880094C471 /* chatupUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73DB332AAC0A880094C471 /* chatupUITests.swift */; };
 		BC73DB362AAC0A880094C471 /* chatupUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73DB352AAC0A880094C471 /* chatupUITestsLaunchTests.swift */; };
+		BC86243B2AAD08AB000EEFE6 /* ChatroomList.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC86243A2AAD08AB000EEFE6 /* ChatroomList.swift */; };
+		BC86243D2AAD0912000EEFE6 /* Chatroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC86243C2AAD0912000EEFE6 /* Chatroom.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BC085F032AFA763A002EE49A /* ChatroomRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomRow.swift; sourceTree = "<group>"; };
+		BC085F052AFBCBFE002EE49A /* ChatroomDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomDetail.swift; sourceTree = "<group>"; };
+		BC085F072AFC769E002EE49A /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		BC085F092AFC78BB002EE49A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BC73DB152AAC0A880094C471 /* chatup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC73DB182AAC0A880094C471 /* chatupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatupApp.swift; sourceTree = "<group>"; };
 		BC73DB1A2AAC0A880094C471 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +54,8 @@
 		BC73DB2F2AAC0A880094C471 /* chatupUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chatupUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC73DB332AAC0A880094C471 /* chatupUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatupUITests.swift; sourceTree = "<group>"; };
 		BC73DB352AAC0A880094C471 /* chatupUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatupUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		BC86243A2AAD08AB000EEFE6 /* ChatroomList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomList.swift; sourceTree = "<group>"; };
+		BC86243C2AAD0912000EEFE6 /* Chatroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatroom.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +110,12 @@
 				BC73DB1A2AAC0A880094C471 /* ContentView.swift */,
 				BC73DB1C2AAC0A880094C471 /* Assets.xcassets */,
 				BC73DB1E2AAC0A880094C471 /* Preview Content */,
+				BC86243A2AAD08AB000EEFE6 /* ChatroomList.swift */,
+				BC86243C2AAD0912000EEFE6 /* Chatroom.swift */,
+				BC085F032AFA763A002EE49A /* ChatroomRow.swift */,
+				BC085F052AFBCBFE002EE49A /* ChatroomDetail.swift */,
+				BC085F072AFC769E002EE49A /* Message.swift */,
+				BC085F092AFC78BB002EE49A /* User.swift */,
 			);
 			path = chatup;
 			sourceTree = "<group>";
@@ -191,7 +209,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1430;
+				LastUpgradeCheck = 1500;
 				TargetAttributes = {
 					BC73DB142AAC0A880094C471 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -257,8 +275,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC085F042AFA763A002EE49A /* ChatroomRow.swift in Sources */,
 				BC73DB1B2AAC0A880094C471 /* ContentView.swift in Sources */,
+				BC86243B2AAD08AB000EEFE6 /* ChatroomList.swift in Sources */,
+				BC085F062AFBCBFE002EE49A /* ChatroomDetail.swift in Sources */,
+				BC085F0A2AFC78BB002EE49A /* User.swift in Sources */,
+				BC86243D2AAD0912000EEFE6 /* Chatroom.swift in Sources */,
 				BC73DB192AAC0A880094C471 /* chatupApp.swift in Sources */,
+				BC085F082AFC769E002EE49A /* Message.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +355,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -391,6 +416,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
