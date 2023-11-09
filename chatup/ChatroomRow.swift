@@ -24,13 +24,13 @@ struct ChatroomRow: View {
                         .padding(.trailing)
                 }
                 HStack {
-                    Text(chatroom.messages.last ?? "")
+                    Text(chatroom.messages.last?.content ?? "")
                         .foregroundStyle(.gray)
                         .font(.system(size: 15))
                         .lineLimit(2)
                         .padding(.trailing)
                 }
-                Divider()
+//                Divider()
             }
         }
 
