@@ -6,4 +6,5 @@ build:
 
 .PHONY: protobufs
 protobufs:
-	protoc -I=src/protobufs --cpp_out=src/protobufs src/protobufs/*.proto
+	./.dependencies/bin/protoc -I../protos --grpc_out=src/protobufs --plugin=protoc-gen-grpc=./.dependencies/bin/grpc_cpp_plugin ../protos/chatup.proto
+	./.dependencies/bin/protoc -I../protos -I./.dependencies/include --cpp_out=src/protobufs ../protos/*.proto

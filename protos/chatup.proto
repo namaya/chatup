@@ -1,0 +1,33 @@
+
+syntax = "proto3";
+
+import "user.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+
+service ChatUpServer {
+    rpc ListChatrooms (google.protobuf.Empty) returns (Chatroom) {}
+    rpc CreateChatroom (Chatroom) returns (Chatroom) {}
+    rpc Join (JoinRequest) returns (ChatMessage) {}
+    rpc Leave (JoinRequest) returns (google.protobuf.Empty) {}
+    rpc SendMessage (ChatMessage) returns (google.protobuf.Empty) {}
+}
+
+message ChatMessage {
+    string id = 1;
+    User author = 2;
+    string content = 3;
+    google.protobuf.Timestamp createdAt = 4;
+    string chatroomId = 5;
+}
+
+message Chatroom {
+    string id = 1;
+    string name = 2;
+    repeated User members = 3;
+}
+
+message JoinRequest {
+    string chatroomId = 1;
+    User user = 2;
+}
