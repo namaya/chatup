@@ -19,7 +19,7 @@ struct ChatroomRow: View {
                     Text(chatroom.name)
                         .bold()
                     Spacer()
-                    Text(chatroom.dateFormatter.string(from: chatroom.lastUpdated))
+                    Text("test")
                         .foregroundStyle(.gray)
                         .padding(.trailing)
                 }
@@ -38,5 +38,8 @@ struct ChatroomRow: View {
 }
 
 #Preview {
-    ChatroomRow(chatroom: chatrooms[0])
+    var exampleChatroom = Chatroom()
+    exampleChatroom.name = "name"
+
+    return ChatroomRow(chatroom: exampleChatroom)
 }

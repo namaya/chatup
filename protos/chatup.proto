@@ -6,7 +6,8 @@ import "google/protobuf/timestamp.proto";
 import "google/protobuf/empty.proto";
 
 service ChatUpServer {
-    rpc ListChatrooms (google.protobuf.Empty) returns (Chatroom) {}
+    rpc ListChatrooms (google.protobuf.Empty) returns (ChatroomList) {}
+    rpc GetChatroom (GetChatroomRequest) returns (ChatroomList) {}
     rpc CreateChatroom (Chatroom) returns (Chatroom) {}
     rpc Join (JoinRequest) returns (ChatMessage) {}
     rpc Leave (JoinRequest) returns (google.protobuf.Empty) {}
@@ -18,13 +19,22 @@ message ChatMessage {
     User author = 2;
     string content = 3;
     google.protobuf.Timestamp createdAt = 4;
-    string chatroomId = 5;
 }
 
 message Chatroom {
     string id = 1;
     string name = 2;
     repeated User members = 3;
+    repeated ChatMessage messages = 4;
+    google.protobuf.Timestamp lastUpdated = 5;
+}
+
+message ChatroomList {
+    repeated Chatroom chatrooms = 1;
+}
+
+message GetChatroomRequest {
+    string id = 1;
 }
 
 message JoinRequest {

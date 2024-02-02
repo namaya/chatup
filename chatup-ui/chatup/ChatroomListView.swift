@@ -7,7 +7,9 @@
 
 import SwiftUI
 
-struct ChatroomList: View {
+struct ChatroomListView: View {
+    @State private var chatrooms: [Chatroom] = []
+    
     var body: some View {
         NavigationStack {
             List(chatrooms, id: \.id) { chatroom in
@@ -19,7 +21,9 @@ struct ChatroomList: View {
             }.navigationTitle("Chatrooms")
                 .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {}) {
+                    Button(action: {
+                        print("Added new chatroom.")
+                    }) {
                         Image(systemName: "plus")
                     }
                 }
@@ -30,6 +34,6 @@ struct ChatroomList: View {
 
 /// Define the views to render in the preview pane in XCode
 #Preview {
-    ChatroomList()
+    ChatroomListView()
 }
 

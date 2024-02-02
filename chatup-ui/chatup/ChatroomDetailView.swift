@@ -10,6 +10,7 @@ import SwiftUI
 
 struct ChatroomDetail: View {
     var chatroom: Chatroom
+    var clientName: String = "Nick"
     
     @State private var textInput: String = ""
 
@@ -17,7 +18,7 @@ struct ChatroomDetail: View {
         VStack {
             List(chatroom.messages, id: \.id) { message in
                 HStack {
-                    if message.author == clientUser.name {
+                    if message.author.name == clientName {
                         Spacer()
                         Text(message.content)
                             .padding(10)
@@ -54,5 +55,8 @@ struct ChatroomDetail: View {
 }
 
 #Preview {
-    ChatroomDetail(chatroom: chatrooms[0])
+    var exampleChatroom = Chatroom()
+    exampleChatroom.name = "name"
+
+    return ChatroomDetail(chatroom: exampleChatroom)
 }
