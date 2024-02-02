@@ -12,7 +12,6 @@ struct ChatroomDetail: View {
     var chatroom: Chatroom
     var clientName: String = "Nick"
     
-    @State private var textInput: String = ""
 
     var body: some View {
         VStack {
@@ -36,20 +35,7 @@ struct ChatroomDetail: View {
                 }
             }
             .navigationBarTitle(chatroom.name)
-            HStack {
-                TextField("Type a message", text: $textInput)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-
-                Button(action: {}) {
-                    Text("Send")
-                        .padding()
-                        .foregroundColor(.white)
-                        .background(Color.blue)
-                        .cornerRadius(10)
-                }
-                .padding()
-            }
+            MessageInputView()
         }
     }
 }

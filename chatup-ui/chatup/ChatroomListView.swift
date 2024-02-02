@@ -9,9 +9,11 @@ import SwiftUI
 import GRPC
 import NIOPosix
 import SwiftProtobuf
+import Logging
 
 struct ChatroomListView: View {
     @State private var chatrooms: [Chatroom] = []
+    @State private var isAddChatroomModalShowing = false;
     
     var body: some View {
         NavigationStack {
@@ -23,19 +25,23 @@ struct ChatroomListView: View {
                 }
             }.navigationTitle("Chatrooms")
                 .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button(action: {
-                        print("Added new chatroom.")
-                    }) {
-                        Image(systemName: "plus")
+                    ToolbarItem(placement: .topBarTrailing) {
+                        Button(action: {
+                            isAddChatroomModalShowing.toggle()
+                        }) {
+                            Image(systemName: "plus")
+                        }
+                        .sheet(isPresented: $isAddChatroomModalShowing, onDismiss: {}) {
+                            AddChatroomView()
+                        }
                     }
                 }
-            }
                 .task {
+                    let logger = Logger(label: "com.namaya.chatroomlistview")
                     guard let serverHost = Bundle.main.infoDictionary?["ChatUp Server Host"] as? String,
                           let serverPort = Bundle.main.infoDictionary?["ChatUp Server Port"] as? Int
                     else {
-                        print("Couldn't fetch server URL.")
+                        logger.error("Couldn't fetch server URL.")
                         return
                     }
                     
@@ -44,21 +50,21 @@ struct ChatroomListView: View {
                     do {
                         let channel = try GRPCChannelPool.with(target: .hostAndPort(serverHost, serverPort), transportSecurity: .plaintext, eventLoopGroup: group)
 
-                        print("Got channel...")
+                        logger.debug("Recieved gRPC channel...")
                         
                         let client = ChatUpServerAsyncClient(channel: channel)
                         
                         let request = Google_Protobuf_Empty()
                         
-                        print("Sending request to backend...")
+                        logger.debug("Sending request to backend...")
                         
                         let chatroomList = try await client.listChatrooms(request)
                         
                         self.chatrooms = chatroomList.chatrooms
                         
-                        print("Retrieved chatrooms! \(self.chatrooms)")
+                        logger.info("Retrieved \(self.chatrooms.count) chatrooms.")
                     } catch let error {
-                        print("Couldn't connect to server. Error: \(error)")
+                        logger.error("Couldn't connect to server. Error: \(error)")
                     }
                     
                 }

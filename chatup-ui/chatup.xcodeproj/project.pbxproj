@@ -26,6 +26,8 @@
 		BCC6A4672B6D57AA008F2CA7 /* chatup.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6A4662B6D57AA008F2CA7 /* chatup.pb.swift */; };
 		BCC6A4692B6D5985008F2CA7 /* user.pb.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6A4682B6D5985008F2CA7 /* user.pb.swift */; };
 		BCC6A46B2B6D63C3008F2CA7 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = BCC6A46A2B6D63C3008F2CA7 /* Makefile */; };
+		BCC6A46E2B6D99CA008F2CA7 /* AddChatroomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6A46D2B6D99CA008F2CA7 /* AddChatroomView.swift */; };
+		BCC6A4702B6DA488008F2CA7 /* MessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6A46F2B6DA488008F2CA7 /* MessageInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +66,8 @@
 		BCC6A4682B6D5985008F2CA7 /* user.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.pb.swift; sourceTree = "<group>"; };
 		BCC6A46A2B6D63C3008F2CA7 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
 		BCC6A46C2B6D80E0008F2CA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		BCC6A46D2B6D99CA008F2CA7 /* AddChatroomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatroomView.swift; sourceTree = "<group>"; };
+		BCC6A46F2B6DA488008F2CA7 /* MessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,6 +133,8 @@
 				BC86243A2AAD08AB000EEFE6 /* ChatroomListView.swift */,
 				BC085F032AFA763A002EE49A /* ChatroomRowView.swift */,
 				BC085F052AFBCBFE002EE49A /* ChatroomDetailView.swift */,
+				BCC6A46D2B6D99CA008F2CA7 /* AddChatroomView.swift */,
+				BCC6A46F2B6DA488008F2CA7 /* MessageInputView.swift */,
 			);
 			path = chatup;
 			sourceTree = "<group>";
@@ -315,7 +321,9 @@
 				BC085F062AFBCBFE002EE49A /* ChatroomDetailView.swift in Sources */,
 				BC73DB192AAC0A880094C471 /* chatupApp.swift in Sources */,
 				BCC6A4652B6D555E008F2CA7 /* chatup.grpc.swift in Sources */,
+				BCC6A46E2B6D99CA008F2CA7 /* AddChatroomView.swift in Sources */,
 				BCC6A4672B6D57AA008F2CA7 /* chatup.pb.swift in Sources */,
+				BCC6A4702B6DA488008F2CA7 /* MessageInputView.swift in Sources */,
 				BCC6A4692B6D5985008F2CA7 /* user.pb.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
