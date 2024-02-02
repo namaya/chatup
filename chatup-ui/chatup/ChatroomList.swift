@@ -16,7 +16,13 @@ struct ChatroomList: View {
                 } label: {
                     ChatroomRow(chatroom: chatroom)
                 }
-                
+            }.navigationTitle("Chatrooms")
+                .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {}) {
+                        Image(systemName: "plus")
+                    }
+                }
             }
         }
     }
