@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import GRPC
+import NIOPosix
+import SwiftProtobuf
 
 struct ChatroomListView: View {
     @State private var chatrooms: [Chatroom] = []
@@ -28,6 +31,37 @@ struct ChatroomListView: View {
                     }
                 }
             }
+                .task {
+                    guard let serverHost = Bundle.main.infoDictionary?["ChatUp Server Host"] as? String,
+                          let serverPort = Bundle.main.infoDictionary?["ChatUp Server Port"] as? Int
+                    else {
+                        print("Couldn't fetch server URL.")
+                        return
+                    }
+                    
+                    let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
+                    
+                    do {
+                        let channel = try GRPCChannelPool.with(target: .hostAndPort(serverHost, serverPort), transportSecurity: .plaintext, eventLoopGroup: group)
+
+                        print("Got channel...")
+                        
+                        let client = ChatUpServerAsyncClient(channel: channel)
+                        
+                        let request = Google_Protobuf_Empty()
+                        
+                        print("Sending request to backend...")
+                        
+                        let chatroomList = try await client.listChatrooms(request)
+                        
+                        self.chatrooms = chatroomList.chatrooms
+                        
+                        print("Retrieved chatrooms! \(self.chatrooms)")
+                    } catch let error {
+                        print("Couldn't connect to server. Error: \(error)")
+                    }
+                    
+                }
         }
     }
 }

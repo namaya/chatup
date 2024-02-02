@@ -63,6 +63,7 @@
 		BCC6A4662B6D57AA008F2CA7 /* chatup.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = chatup.pb.swift; sourceTree = "<group>"; };
 		BCC6A4682B6D5985008F2CA7 /* user.pb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = user.pb.swift; sourceTree = "<group>"; };
 		BCC6A46A2B6D63C3008F2CA7 /* Makefile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.make; path = Makefile; sourceTree = "<group>"; };
+		BCC6A46C2B6D80E0008F2CA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +121,7 @@
 		BC73DB172AAC0A880094C471 /* chatup */ = {
 			isa = PBXGroup;
 			children = (
+				BCC6A46C2B6D80E0008F2CA7 /* Info.plist */,
 				BC73DB182AAC0A880094C471 /* chatupApp.swift */,
 				BC73DB1A2AAC0A880094C471 /* ContentView.swift */,
 				BC73DB1C2AAC0A880094C471 /* Assets.xcassets */,
@@ -478,6 +480,7 @@
 				DEVELOPMENT_TEAM = UAZWRHLHBD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = chatup/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -507,6 +510,7 @@
 				DEVELOPMENT_TEAM = UAZWRHLHBD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = chatup/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
