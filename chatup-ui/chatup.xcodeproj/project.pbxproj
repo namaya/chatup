@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BC085F042AFA763A002EE49A /* ChatroomRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC085F032AFA763A002EE49A /* ChatroomRowView.swift */; };
 		BC085F062AFBCBFE002EE49A /* ChatroomDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC085F052AFBCBFE002EE49A /* ChatroomDetailView.swift */; };
+		BC0CAF1A2B7077B00069EBC0 /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0CAF192B7077B00069EBC0 /* SecureStorage.swift */; };
 		BC73DB192AAC0A880094C471 /* chatupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73DB182AAC0A880094C471 /* chatupApp.swift */; };
 		BC73DB1B2AAC0A880094C471 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73DB1A2AAC0A880094C471 /* ContentView.swift */; };
 		BC73DB1D2AAC0A880094C471 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC73DB1C2AAC0A880094C471 /* Assets.xcassets */; };
@@ -28,6 +29,9 @@
 		BCC6A46B2B6D63C3008F2CA7 /* Makefile in Sources */ = {isa = PBXBuildFile; fileRef = BCC6A46A2B6D63C3008F2CA7 /* Makefile */; };
 		BCC6A46E2B6D99CA008F2CA7 /* AddChatroomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6A46D2B6D99CA008F2CA7 /* AddChatroomView.swift */; };
 		BCC6A4702B6DA488008F2CA7 /* MessageInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC6A46F2B6DA488008F2CA7 /* MessageInputView.swift */; };
+		BCC6A4722B6DD7E9008F2CA7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = BCC6A4712B6DD7E9008F2CA7 /* GoogleService-Info.plist */; };
+		BCD1DA652B6DFC7600CE261C /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = BCD1DA642B6DFC7600CE261C /* FirebaseAuth */; };
+		BCD1DA672B6E99C900CE261C /* UserSignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD1DA662B6E99C900CE261C /* UserSignInView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,7 @@
 /* Begin PBXFileReference section */
 		BC085F032AFA763A002EE49A /* ChatroomRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomRowView.swift; sourceTree = "<group>"; };
 		BC085F052AFBCBFE002EE49A /* ChatroomDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomDetailView.swift; sourceTree = "<group>"; };
+		BC0CAF192B7077B00069EBC0 /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
 		BC73DB152AAC0A880094C471 /* chatup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC73DB182AAC0A880094C471 /* chatupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatupApp.swift; sourceTree = "<group>"; };
 		BC73DB1A2AAC0A880094C471 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -68,6 +73,8 @@
 		BCC6A46C2B6D80E0008F2CA7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		BCC6A46D2B6D99CA008F2CA7 /* AddChatroomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChatroomView.swift; sourceTree = "<group>"; };
 		BCC6A46F2B6DA488008F2CA7 /* MessageInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageInputView.swift; sourceTree = "<group>"; };
+		BCC6A4712B6DD7E9008F2CA7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BCD1DA662B6E99C900CE261C /* UserSignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSignInView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +83,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCC6A45C2B6D4C05008F2CA7 /* GRPCReflectionService in Frameworks */,
+				BCD1DA652B6DFC7600CE261C /* FirebaseAuth in Frameworks */,
 				BCC6A45E2B6D4C05008F2CA7 /* _GRPCCore in Frameworks */,
 				BCC6A45A2B6D4C05008F2CA7 /* GRPC in Frameworks */,
 				BCC6A4582B6D4C05008F2CA7 /* CGRPCZlib in Frameworks */,
@@ -125,6 +133,7 @@
 		BC73DB172AAC0A880094C471 /* chatup */ = {
 			isa = PBXGroup;
 			children = (
+				BCC6A4712B6DD7E9008F2CA7 /* GoogleService-Info.plist */,
 				BCC6A46C2B6D80E0008F2CA7 /* Info.plist */,
 				BC73DB182AAC0A880094C471 /* chatupApp.swift */,
 				BC73DB1A2AAC0A880094C471 /* ContentView.swift */,
@@ -135,6 +144,8 @@
 				BC085F052AFBCBFE002EE49A /* ChatroomDetailView.swift */,
 				BCC6A46D2B6D99CA008F2CA7 /* AddChatroomView.swift */,
 				BCC6A46F2B6DA488008F2CA7 /* MessageInputView.swift */,
+				BCD1DA662B6E99C900CE261C /* UserSignInView.swift */,
+				BC0CAF192B7077B00069EBC0 /* SecureStorage.swift */,
 			);
 			path = chatup;
 			sourceTree = "<group>";
@@ -196,6 +207,7 @@
 				BCC6A45B2B6D4C05008F2CA7 /* GRPCReflectionService */,
 				BCC6A45D2B6D4C05008F2CA7 /* _GRPCCore */,
 				BCC6A45F2B6D4C05008F2CA7 /* protoc-gen-grpc-swift */,
+				BCD1DA642B6DFC7600CE261C /* FirebaseAuth */,
 			);
 			productName = chatup;
 			productReference = BC73DB152AAC0A880094C471 /* chatup.app */;
@@ -271,6 +283,7 @@
 			mainGroup = BC73DB0C2AAC0A880094C471;
 			packageReferences = (
 				BCC6A4562B6D4C04008F2CA7 /* XCRemoteSwiftPackageReference "grpc-swift" */,
+				BCD1DA632B6DFC7600CE261C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = BC73DB162AAC0A880094C471 /* Products */;
 			projectDirPath = "";
@@ -290,6 +303,7 @@
 			files = (
 				BC73DB202AAC0A880094C471 /* Preview Assets.xcassets in Resources */,
 				BC73DB1D2AAC0A880094C471 /* Assets.xcassets in Resources */,
+				BCC6A4722B6DD7E9008F2CA7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,7 +332,9 @@
 				BC085F042AFA763A002EE49A /* ChatroomRowView.swift in Sources */,
 				BC73DB1B2AAC0A880094C471 /* ContentView.swift in Sources */,
 				BC86243B2AAD08AB000EEFE6 /* ChatroomListView.swift in Sources */,
+				BC0CAF1A2B7077B00069EBC0 /* SecureStorage.swift in Sources */,
 				BC085F062AFBCBFE002EE49A /* ChatroomDetailView.swift in Sources */,
+				BCD1DA672B6E99C900CE261C /* UserSignInView.swift in Sources */,
 				BC73DB192AAC0A880094C471 /* chatupApp.swift in Sources */,
 				BCC6A4652B6D555E008F2CA7 /* chatup.grpc.swift in Sources */,
 				BCC6A46E2B6D99CA008F2CA7 /* AddChatroomView.swift in Sources */,
@@ -663,6 +679,14 @@
 				minimumVersion = 1.21.0;
 			};
 		};
+		BCD1DA632B6DFC7600CE261C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.20.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -690,6 +714,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BCC6A4562B6D4C04008F2CA7 /* XCRemoteSwiftPackageReference "grpc-swift" */;
 			productName = "protoc-gen-grpc-swift";
+		};
+		BCD1DA642B6DFC7600CE261C /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BCD1DA632B6DFC7600CE261C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
