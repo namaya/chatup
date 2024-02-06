@@ -23,51 +23,52 @@ struct ChatroomListView: View {
                 } label: {
                     ChatroomRow(chatroom: chatroom)
                 }
-            }.navigationTitle("Chatrooms")
-                .toolbar {
-                    ToolbarItem(placement: .topBarTrailing) {
-                        Button(action: {
-                            isAddChatroomModalShowing.toggle()
-                        }) {
-                            Image(systemName: "plus")
-                        }
-                        .sheet(isPresented: $isAddChatroomModalShowing, onDismiss: {}) {
-                            AddChatroomView()
-                        }
+            }
+            .navigationTitle("Chatrooms")
+            .toolbar {
+                ToolbarItem(placement: .topBarTrailing) {
+                    Button(action: {
+                        isAddChatroomModalShowing.toggle()
+                    }) {
+                        Image(systemName: "plus")
+                    }
+                    .sheet(isPresented: $isAddChatroomModalShowing, onDismiss: {}) {
+                        AddChatroomView()
                     }
                 }
-                .task {
-                    let logger = Logger(label: "com.namaya.chatroomlistview")
-                    guard let serverHost = Bundle.main.infoDictionary?["ChatUp Server Host"] as? String,
-                          let serverPort = Bundle.main.infoDictionary?["ChatUp Server Port"] as? Int
-                    else {
-                        logger.error("Couldn't fetch server URL.")
-                        return
-                    }
-                    
-                    let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
-                    
-                    do {
-                        let channel = try GRPCChannelPool.with(target: .hostAndPort(serverHost, serverPort), transportSecurity: .plaintext, eventLoopGroup: group)
+            }
+            .task {
+                let logger = Logger(label: "com.namaya.chatroomlistview")
+                guard let serverHost = Bundle.main.infoDictionary?["ChatUp Server Host"] as? String,
+                      let serverPort = Bundle.main.infoDictionary?["ChatUp Server Port"] as? Int
+                else {
+                    logger.error("Couldn't fetch server URL.")
+                    return
+                }
+                
+                let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
+                
+                do {
+                    let channel = try GRPCChannelPool.with(target: .hostAndPort(serverHost, serverPort), transportSecurity: .plaintext, eventLoopGroup: group)
 
-                        logger.debug("Recieved gRPC channel...")
-                        
-                        let client = ChatUpServerAsyncClient(channel: channel)
-                        
-                        let request = Google_Protobuf_Empty()
-                        
-                        logger.debug("Sending request to backend...")
-                        
-                        let chatroomList = try await client.listChatrooms(request)
-                        
-                        self.chatrooms = chatroomList.chatrooms
-                        
-                        logger.info("Retrieved \(self.chatrooms.count) chatrooms.")
-                    } catch let error {
-                        logger.error("Couldn't connect to server. Error: \(error)")
-                    }
+                    logger.debug("Recieved gRPC channel...")
                     
+                    let client = ChatUpServerAsyncClient(channel: channel)
+                    
+                    let request = Google_Protobuf_Empty()
+                    
+                    logger.debug("Sending request to backend...")
+                    
+                    let chatroomList = try await client.listChatrooms(request)
+                    
+                    self.chatrooms = chatroomList.chatrooms
+                    
+                    logger.info("Retrieved \(self.chatrooms.count) chatrooms.")
+                } catch let error {
+                    logger.error("Couldn't connect to server. Error: \(error)")
                 }
+                
+            }
         }
     }
 }
