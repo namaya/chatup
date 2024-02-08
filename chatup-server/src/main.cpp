@@ -6,6 +6,18 @@
 
 std::vector<Chatroom> chatrooms{};
 
+class ChatroomRepository {
+private:
+  std::vector<Chatroom> chatrooms{};
+
+public:
+  ChatroomRepository() {}
+
+  std::vector<Chatroom> listChatrooms(std::string userId) { return chatrooms; }
+
+  void createChatroom(Chatroom chatroom) { chatrooms.push_back(chatroom); }
+};
+
 class ChatUpServerImpl final : public ChatUpServer::Service {
 
 public:
@@ -14,6 +26,27 @@ public:
   grpc::Status ListChatrooms(grpc::ServerContext *context,
                              const google::protobuf::Empty *request,
                              ChatroomList *response) {
+
+    auto metadata = context->client_metadata();
+
+    std::cout << "Received metadata:\n";
+
+    std::string token = "";
+
+    for (const auto &kv_pair : metadata) {
+      const auto &key = kv_pair.first;
+      const auto &value = kv_pair.second;
+
+      if (key == "authorization") {
+        token = value.data();
+        std::cout << "Authorization: " << token << "\n";
+      }
+    }
+
+    if (token.empty()) {
+      return grpc::Status(grpc::StatusCode::UNAUTHENTICATED, "No token");
+    }
+
     for (const auto &chatroom : chatrooms) {
       response->add_chatrooms()->CopyFrom(chatroom);
     }

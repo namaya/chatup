@@ -15,7 +15,7 @@ struct UserSignInView: View {
     
     @State private var username: String = ""
     @State private var password: String = ""
-    @Binding var isAuthenticated: Bool
+    @Binding var currentUser: FirebaseAuth.User?
     
     var body: some View {
         VStack {
@@ -28,22 +28,25 @@ struct UserSignInView: View {
             }
             VStack {
                 Spacer()
-                TextField("User name (email address)", text: $username)
-                TextField("Password", text: $password)
+                TextField("Email", text: $username)
+                SecureField("Password", text: $password)
+                    .padding(2)
                 Button("Sign In") {
+                    logger.info("Signing in...")
                     Auth.auth().signIn(withEmail: username, password: password) { authResult, error in
-                        guard error == nil else {
+                        guard error == nil, authResult != nil else {
                              logger.error("Couldn't sign user in. Error: \(error)")
                             return
                         }
                         
                         logger.info("User \(authResult?.user.email) signed in.")
                         
-                        isAuthenticated = true
+                        currentUser = Auth.auth().currentUser
+                        
                     }
-                    
-                    print("isAuthenticated: \(isAuthenticated)")
                 }
+                .disabled(username.isEmpty || password.isEmpty)
+                .padding(2)
                 Button(action: {
                     
                 }, label: {
@@ -59,11 +62,11 @@ struct UserSignInView: View {
 
 #Preview {
     struct PreviewWrapper: View {
-        @State var isAuthenticated: Bool = false
+        @State var currentUser: FirebaseAuth.User? = nil
         
         var body: some View {
-            if !isAuthenticated {
-                UserSignInView(isAuthenticated: $isAuthenticated)
+            if currentUser == nil {
+                UserSignInView(currentUser: $currentUser)
             } else {
                 Text("Success!")
             }

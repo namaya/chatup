@@ -10,9 +10,13 @@ import GRPC
 import NIOPosix
 import SwiftProtobuf
 import Logging
+import FirebaseAuth
 
 struct ChatroomListView: View {
+    
+    @Binding var currentUser: FirebaseAuth.User?
     @State private var chatrooms: [Chatroom] = []
+    
     @State private var isAddChatroomModalShowing = false;
     
     var body: some View {
@@ -53,7 +57,9 @@ struct ChatroomListView: View {
 
                     logger.debug("Recieved gRPC channel...")
                     
-                    let client = ChatUpServerAsyncClient(channel: channel)
+                    let interceptorFactory = AuthGrpcInterceptorFactory()
+                    
+                    let client = ChatUpServerAsyncClient(channel: channel, interceptors: interceptorFactory)
                     
                     let request = Google_Protobuf_Empty()
                     
@@ -75,6 +81,14 @@ struct ChatroomListView: View {
 
 /// Define the views to render in the preview pane in XCode
 #Preview {
-    ChatroomListView()
+    struct PreviewWrapper: View {
+        @State var currentUser: FirebaseAuth.User? = nil
+        
+        var body: some View {
+            ChatroomListView(currentUser: $currentUser)
+        }
+    }
+    
+    return PreviewWrapper()
 }
 

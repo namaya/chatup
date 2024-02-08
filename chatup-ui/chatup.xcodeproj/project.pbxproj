@@ -10,6 +10,7 @@
 		BC085F042AFA763A002EE49A /* ChatroomRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC085F032AFA763A002EE49A /* ChatroomRowView.swift */; };
 		BC085F062AFBCBFE002EE49A /* ChatroomDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC085F052AFBCBFE002EE49A /* ChatroomDetailView.swift */; };
 		BC0CAF1A2B7077B00069EBC0 /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0CAF192B7077B00069EBC0 /* SecureStorage.swift */; };
+		BC0CAF1D2B7476000069EBC0 /* AuthGrpcInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0CAF1C2B7476000069EBC0 /* AuthGrpcInterceptor.swift */; };
 		BC73DB192AAC0A880094C471 /* chatupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73DB182AAC0A880094C471 /* chatupApp.swift */; };
 		BC73DB1B2AAC0A880094C471 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73DB1A2AAC0A880094C471 /* ContentView.swift */; };
 		BC73DB1D2AAC0A880094C471 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC73DB1C2AAC0A880094C471 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		BC085F032AFA763A002EE49A /* ChatroomRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomRowView.swift; sourceTree = "<group>"; };
 		BC085F052AFBCBFE002EE49A /* ChatroomDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomDetailView.swift; sourceTree = "<group>"; };
 		BC0CAF192B7077B00069EBC0 /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
+		BC0CAF1C2B7476000069EBC0 /* AuthGrpcInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthGrpcInterceptor.swift; sourceTree = "<group>"; };
 		BC73DB152AAC0A880094C471 /* chatup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC73DB182AAC0A880094C471 /* chatupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatupApp.swift; sourceTree = "<group>"; };
 		BC73DB1A2AAC0A880094C471 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -108,6 +110,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BC0CAF1B2B7475760069EBC0 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BC73DB1A2AAC0A880094C471 /* ContentView.swift */,
+				BCD1DA662B6E99C900CE261C /* UserSignInView.swift */,
+				BC86243A2AAD08AB000EEFE6 /* ChatroomListView.swift */,
+				BC085F032AFA763A002EE49A /* ChatroomRowView.swift */,
+				BC085F052AFBCBFE002EE49A /* ChatroomDetailView.swift */,
+				BCC6A46D2B6D99CA008F2CA7 /* AddChatroomView.swift */,
+				BCC6A46F2B6DA488008F2CA7 /* MessageInputView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		BC73DB0C2AAC0A880094C471 = {
 			isa = PBXGroup;
 			children = (
@@ -133,19 +149,14 @@
 		BC73DB172AAC0A880094C471 /* chatup */ = {
 			isa = PBXGroup;
 			children = (
+				BC0CAF1B2B7475760069EBC0 /* Views */,
 				BCC6A4712B6DD7E9008F2CA7 /* GoogleService-Info.plist */,
 				BCC6A46C2B6D80E0008F2CA7 /* Info.plist */,
 				BC73DB182AAC0A880094C471 /* chatupApp.swift */,
-				BC73DB1A2AAC0A880094C471 /* ContentView.swift */,
 				BC73DB1C2AAC0A880094C471 /* Assets.xcassets */,
 				BC73DB1E2AAC0A880094C471 /* Preview Content */,
-				BC86243A2AAD08AB000EEFE6 /* ChatroomListView.swift */,
-				BC085F032AFA763A002EE49A /* ChatroomRowView.swift */,
-				BC085F052AFBCBFE002EE49A /* ChatroomDetailView.swift */,
-				BCC6A46D2B6D99CA008F2CA7 /* AddChatroomView.swift */,
-				BCC6A46F2B6DA488008F2CA7 /* MessageInputView.swift */,
-				BCD1DA662B6E99C900CE261C /* UserSignInView.swift */,
 				BC0CAF192B7077B00069EBC0 /* SecureStorage.swift */,
+				BC0CAF1C2B7476000069EBC0 /* AuthGrpcInterceptor.swift */,
 			);
 			path = chatup;
 			sourceTree = "<group>";
@@ -335,6 +346,7 @@
 				BC0CAF1A2B7077B00069EBC0 /* SecureStorage.swift in Sources */,
 				BC085F062AFBCBFE002EE49A /* ChatroomDetailView.swift in Sources */,
 				BCD1DA672B6E99C900CE261C /* UserSignInView.swift in Sources */,
+				BC0CAF1D2B7476000069EBC0 /* AuthGrpcInterceptor.swift in Sources */,
 				BC73DB192AAC0A880094C471 /* chatupApp.swift in Sources */,
 				BCC6A4652B6D555E008F2CA7 /* chatup.grpc.swift in Sources */,
 				BCC6A46E2B6D99CA008F2CA7 /* AddChatroomView.swift in Sources */,

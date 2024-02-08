@@ -6,16 +6,17 @@
 //
 
 import SwiftUI
+import FirebaseAuth
 
 struct ContentView: View {
     
-    @State private var isAuthenticated: Bool = false
+    @State private var currentUser: FirebaseAuth.User? = nil
     
     var body: some View {
-        if !isAuthenticated {
-            UserSignInView(isAuthenticated: $isAuthenticated)
+        if currentUser == nil {
+            UserSignInView(currentUser: $currentUser)
         } else {
-            ChatroomListView()
+            ChatroomListView(currentUser: $currentUser)
         }
     }
 }
