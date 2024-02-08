@@ -15,7 +15,7 @@ struct UserSignInView: View {
     
     @State private var username: String = ""
     @State private var password: String = ""
-    @State private var isAuthenticated: Bool = false
+    @Binding var isAuthenticated: Bool
     
     var body: some View {
         VStack {
@@ -30,23 +30,20 @@ struct UserSignInView: View {
                 Spacer()
                 TextField("User name (email address)", text: $username)
                 TextField("Password", text: $password)
-                NavigationLink(destination: ChatroomListView(), isActive: $isAuthenticated) {
-                    Text("Sign In")
-                        .onTapGesture {
-                            Auth.auth().signIn(withEmail: username, password: password) { authResult, error in
-                                guard error == nil else {
-                                     logger.error("Couldn't sign user in. Error: \(error)")
-                                    return
-                                }
-                                
-                                logger.info("User \(authResult?.user.email) signed in.")
-                                
-                                isAuthenticated = true
-                            }
+                Button("Sign In") {
+                    Auth.auth().signIn(withEmail: username, password: password) { authResult, error in
+                        guard error == nil else {
+                             logger.error("Couldn't sign user in. Error: \(error)")
+                            return
                         }
+                        
+                        logger.info("User \(authResult?.user.email) signed in.")
+                        
+                        isAuthenticated = true
+                    }
+                    
+                    print("isAuthenticated: \(isAuthenticated)")
                 }
-                .padding(2)
-        //        .background(.blue, in: .containerRelative)
                 Button(action: {
                     
                 }, label: {
@@ -61,5 +58,17 @@ struct UserSignInView: View {
 }
 
 #Preview {
-    UserSignInView()
+    struct PreviewWrapper: View {
+        @State var isAuthenticated: Bool = false
+        
+        var body: some View {
+            if !isAuthenticated {
+                UserSignInView(isAuthenticated: $isAuthenticated)
+            } else {
+                Text("Success!")
+            }
+        }
+    }
+    
+    return PreviewWrapper()
 }

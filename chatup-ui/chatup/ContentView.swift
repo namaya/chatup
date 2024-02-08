@@ -9,8 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State private var isAuthenticated: Bool = false
+    
     var body: some View {
-        UserSignInView()
+        if !isAuthenticated {
+            UserSignInView(isAuthenticated: $isAuthenticated)
+        } else {
+            ChatroomListView()
+        }
     }
 }
 
