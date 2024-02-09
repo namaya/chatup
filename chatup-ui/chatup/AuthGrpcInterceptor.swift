@@ -10,10 +10,13 @@ import GRPC
 import NIOCore
 import SwiftProtobuf
 
+import FirebaseAuth
+
 typealias Request = GRPCAsyncServerCallContext.Request
 typealias Response = GRPCAsyncServerCallContext.Response
 
 class AuthGrpcInterceptor<Request, Response>: ClientInterceptor<Request, Response> {
+    
     override func send(
       _ part: GRPCClientRequestPart<Request>,
       promise: EventLoopPromise<Void>?,
@@ -21,19 +24,39 @@ class AuthGrpcInterceptor<Request, Response>: ClientInterceptor<Request, Respons
     ) {
         switch part {
         case .metadata(var headers):
-            let token = "some-token"
-            headers.add(name: "Authorization", value: "Bearer \(token)")
+            let semaphore = DispatchSemaphore(value: 0)
+            var token = ""
             
+            Auth.auth().currentUser?.getIDToken { tokenResult, error in
+                guard error == nil, tokenResult != nil else {
+                    error.map { error in
+                        print("Couldn't retrieve access token. Error: \(error)")
+                    }
+                    return
+                }
+                
+                tokenResult.map { result in
+                    token = result
+                }
+                
+                semaphore.signal()
+            }
+            
+            semaphore.wait()
+            
+            headers.add(name: "Authorization", value: "Bearer \(token)")
             context.send(.metadata(headers), promise: promise)
         default:
             context.send(part, promise: promise)
         }
+        
     }
 }
 
 
 
 final class AuthGrpcInterceptorFactory: ChatUpServerClientInterceptorFactoryProtocol {
+    
     func makeListChatroomsInterceptors() -> [GRPC.ClientInterceptor<SwiftProtobuf.Google_Protobuf_Empty, ChatroomList>] {
         return [AuthGrpcInterceptor<Google_Protobuf_Empty, ChatroomList>()]
     }
