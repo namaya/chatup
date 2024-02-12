@@ -1,7 +1,7 @@
 
 .PHONY: build
 build:
-	cmake -DCMAKE_CXX_COMPILER=clang++ -S src -B build
+	cmake -S src -B build
 	cmake --build build
 
 .PHONY: protobufs

@@ -1,8 +1,10 @@
 
-#include "protobufs/chatup.grpc.pb.h"
-#include <grpcpp/server_builder.h>
+#include <fstream>
 #include <iostream>
 #include <string>
+
+#include "protobufs/chatup.grpc.pb.h"
+#include <grpcpp/server_builder.h>
 
 std::vector<Chatroom> chatrooms{};
 
@@ -29,27 +31,10 @@ public:
 
     auto metadata = context->client_metadata();
 
-    std::cout << "Received metadata:\n";
-
-    std::string token = "";
-
-    for (const auto &kv_pair : metadata) {
-      const auto &key = kv_pair.first;
-      const auto &value = kv_pair.second;
-
-      if (key == "authorization") {
-        token = value.data();
-        std::cout << "Authorization: " << token << "\n";
-      }
-    }
-
-    if (token.empty()) {
-      return grpc::Status(grpc::StatusCode::UNAUTHENTICATED, "No token");
-    }
-
     for (const auto &chatroom : chatrooms) {
       response->add_chatrooms()->CopyFrom(chatroom);
     }
+
     return grpc::Status::OK;
   }
   grpc::Status CreateChatroom(grpc::ServerContext *context,
@@ -80,9 +65,28 @@ public:
   }
 };
 
-int main() {
-  std::string server_address{"0.0.0.0:50051"};
+std::string read_file(const std::string &path) {
+  std::ifstream file{path};
 
+  if (!file) {
+    std::cerr << "Couldn't open file at '" << path << "'\n";
+    return ""; // TODO: throw exception
+  }
+
+  file.seekg(0, std::ios_base::end);
+  const auto file_length = file.tellg();
+  file.seekg(0, std::ios_base::beg);
+
+  char *buffer = new char[file_length];
+
+  file.read(buffer, file_length);
+
+  file.close();
+
+  return std::string{buffer, (size_t)file_length};
+}
+
+int main() {
   // Add some mock data
   auto nick = User{};
   auto katelynn = User{};
@@ -113,8 +117,22 @@ int main() {
   ChatUpServerImpl grpcService{};
 
   grpc::ServerBuilder builder{};
+  std::string server_address{"0.0.0.0:50051"};
 
-  builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());
+  // Configure SSL
+  std::string server_public_cert = read_file("server.crt");
+  std::string server_private_key = read_file("server.key");
+
+  grpc::SslServerCredentialsOptions::PemKeyCertPair key_cert_pair;
+  key_cert_pair.private_key = server_private_key;
+  key_cert_pair.cert_chain = server_public_cert;
+
+  grpc::SslServerCredentialsOptions ssl_opts;
+  ssl_opts.pem_root_certs = "";
+  ssl_opts.pem_key_cert_pairs.push_back(key_cert_pair);
+
+  builder.AddListeningPort(server_address,
+                           grpc::SslServerCredentials(ssl_opts));
   builder.RegisterService(&grpcService);
 
   std::unique_ptr<grpc::Server> server{builder.BuildAndStart()};
