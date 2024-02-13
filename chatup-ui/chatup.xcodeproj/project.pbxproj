@@ -11,6 +11,7 @@
 		BC085F062AFBCBFE002EE49A /* ChatroomDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC085F052AFBCBFE002EE49A /* ChatroomDetailView.swift */; };
 		BC0CAF1A2B7077B00069EBC0 /* SecureStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0CAF192B7077B00069EBC0 /* SecureStorage.swift */; };
 		BC0CAF1D2B7476000069EBC0 /* AuthGrpcInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0CAF1C2B7476000069EBC0 /* AuthGrpcInterceptor.swift */; };
+		BC5613602B7BA4A90067600E /* ChatroomsObservable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC56135F2B7BA4A90067600E /* ChatroomsObservable.swift */; };
 		BC73DB192AAC0A880094C471 /* chatupApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73DB182AAC0A880094C471 /* chatupApp.swift */; };
 		BC73DB1B2AAC0A880094C471 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC73DB1A2AAC0A880094C471 /* ContentView.swift */; };
 		BC73DB1D2AAC0A880094C471 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC73DB1C2AAC0A880094C471 /* Assets.xcassets */; };
@@ -57,6 +58,7 @@
 		BC085F052AFBCBFE002EE49A /* ChatroomDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomDetailView.swift; sourceTree = "<group>"; };
 		BC0CAF192B7077B00069EBC0 /* SecureStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureStorage.swift; sourceTree = "<group>"; };
 		BC0CAF1C2B7476000069EBC0 /* AuthGrpcInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthGrpcInterceptor.swift; sourceTree = "<group>"; };
+		BC56135F2B7BA4A90067600E /* ChatroomsObservable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomsObservable.swift; sourceTree = "<group>"; };
 		BC73DB152AAC0A880094C471 /* chatup.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = chatup.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC73DB182AAC0A880094C471 /* chatupApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = chatupApp.swift; sourceTree = "<group>"; };
 		BC73DB1A2AAC0A880094C471 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -157,6 +159,7 @@
 				BC73DB1E2AAC0A880094C471 /* Preview Content */,
 				BC0CAF192B7077B00069EBC0 /* SecureStorage.swift */,
 				BC0CAF1C2B7476000069EBC0 /* AuthGrpcInterceptor.swift */,
+				BC56135F2B7BA4A90067600E /* ChatroomsObservable.swift */,
 			);
 			path = chatup;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				BC73DB1B2AAC0A880094C471 /* ContentView.swift in Sources */,
 				BC86243B2AAD08AB000EEFE6 /* ChatroomListView.swift in Sources */,
 				BC0CAF1A2B7077B00069EBC0 /* SecureStorage.swift in Sources */,
+				BC5613602B7BA4A90067600E /* ChatroomsObservable.swift in Sources */,
 				BC085F062AFBCBFE002EE49A /* ChatroomDetailView.swift in Sources */,
 				BCD1DA672B6E99C900CE261C /* UserSignInView.swift in Sources */,
 				BC0CAF1D2B7476000069EBC0 /* AuthGrpcInterceptor.swift in Sources */,

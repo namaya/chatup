@@ -6,22 +6,18 @@
 //
 
 import SwiftUI
-import GRPC
-import NIOPosix
-import SwiftProtobuf
 import Logging
 import FirebaseAuth
 
 struct ChatroomListView: View {
-    
     @Binding var currentUser: FirebaseAuth.User?
-    @State private var chatrooms: [Chatroom] = []
+    @StateObject private var chatroomsObservable = MyChatroomsObservable()
     
     @State private var isAddChatroomModalShowing = false;
     
     var body: some View {
         NavigationStack {
-            List(chatrooms, id: \.id) { chatroom in
+            List(chatroomsObservable.chatrooms, id: \.id) { chatroom in
                 NavigationLink {
                     ChatroomDetail(chatroom: chatroom)
                 } label: {
@@ -42,38 +38,7 @@ struct ChatroomListView: View {
                 }
             }
             .task {
-                let logger = Logger(label: "com.namaya.chatroomlistview")
-                guard let serverHost = Bundle.main.infoDictionary?["ChatUp Server Host"] as? String,
-                      let serverPort = Bundle.main.infoDictionary?["ChatUp Server Port"] as? Int
-                else {
-                    logger.error("Couldn't fetch server URL.")
-                    return
-                }
-                
-                let group = MultiThreadedEventLoopGroup(numberOfThreads: 1)
-                
-                do {
-                    let channel = try GRPCChannelPool.with(target: .hostAndPort(serverHost, serverPort), transportSecurity: .plaintext, eventLoopGroup: group)
-
-                    logger.debug("Recieved gRPC channel...")
-                    
-                    let interceptorFactory = AuthGrpcInterceptorFactory()
-                    
-                    let client = ChatUpServerAsyncClient(channel: channel, interceptors: interceptorFactory)
-                    
-                    let request = Google_Protobuf_Empty()
-                    
-                    logger.debug("Sending request to backend...")
-                    
-                    let chatroomList = try await client.listChatrooms(request)
-                    
-                    self.chatrooms = chatroomList.chatrooms
-                    
-                    logger.info("Retrieved \(self.chatrooms.count) chatrooms.")
-                } catch let error {
-                    logger.error("Couldn't connect to server. Error: \(error)")
-                }
-                
+                await chatroomsObservable.loadChatrooms()
             }
         }
     }
